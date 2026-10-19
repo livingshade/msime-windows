@@ -52,6 +52,9 @@ TEST_CASE(japanese_dictionary_missing_file_does_not_create_a_database)
     REQUIRE(!std::filesystem::exists(missing));
 }
 
+// These content expectations are tied to GlossFixture's dictionary, created locally
+// for this test. Custom dictionaries may have different translations, readings or
+// headwords, so these assertions may not apply unchanged.
 TEST_CASE(japanese_dictionary_returns_gloss_and_reading)
 {
     GlossFixture fixture;
