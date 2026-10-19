@@ -1824,9 +1824,9 @@ VisualPtr BuildInputPage(PageContext &context)
             model->Post("openExternalUrl",
                         "https://github.com/metasequoiaime/msime-windows/blob/develop/japanese-dictionary/README.md");
         });
-        auto japanese = Col({LanguageRow(L"日语释义词库", L"从开放词典下载并构建，需要 Python 3.10 或以上",
-                                         japaneseActions),
-                             s->japaneseStatus, japaneseSources});
+        auto japanese =
+            Col({LanguageRow(L"日语释义词库", L"从开放词典下载并构建，需要 Python 3.10 或以上", japaneseActions),
+                 s->japaneseStatus, japaneseSources});
         auto options = Col(
             {std::make_shared<Divider>(Divider::Kind::Option),
              blockInput(LanguageRow(L"显示词性", L"显示译文中的 n.、v. 等词性标记，关闭后仅显示释义", s->showPosBlock)),
@@ -2121,7 +2121,7 @@ VisualPtr BuildInputPage(PageContext &context)
             s->japaneseRestart->SetVisible(StateOf(status) == "ready");
             if (busy && s->japanesePoll == 0)
                 s->japanesePoll = PageTimers::Start(host->Hwnd(), 2000, true,
-                                                   [model]() { model->Post("japaneseDictionaryStatusRequest"); });
+                                                    [model]() { model->Post("japaneseDictionaryStatusRequest"); });
             else if (!busy)
                 PageTimers::Stop(s->japanesePoll);
         }

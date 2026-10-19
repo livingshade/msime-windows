@@ -65,8 +65,8 @@ bool LaunchPython(const std::wstring &python, const std::wstring &arguments, HAN
     startup.hStdError = log;
     startup.hStdInput = GetStdHandle(STD_INPUT_HANDLE);
     PROCESS_INFORMATION process{};
-    if (!CreateProcessW(nullptr, command.data(), nullptr, nullptr, TRUE, CREATE_NO_WINDOW, nullptr, nullptr,
-                        &startup, &process))
+    if (!CreateProcessW(nullptr, command.data(), nullptr, nullptr, TRUE, CREATE_NO_WINDOW, nullptr, nullptr, &startup,
+                        &process))
         return false;
     CloseHandle(process.hThread);
     g_process.handle = process.hProcess;

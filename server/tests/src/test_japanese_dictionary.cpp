@@ -43,9 +43,9 @@ class GlossFixture
 
 TEST_CASE(japanese_dictionary_missing_file_does_not_create_a_database)
 {
-    const auto missing = std::filesystem::temp_directory_path() /
-                         ("msime-missing-" + std::to_string(std::chrono::steady_clock::now().time_since_epoch().count()) +
-                          ".db");
+    const auto missing =
+        std::filesystem::temp_directory_path() /
+        ("msime-missing-" + std::to_string(std::chrono::steady_clock::now().time_since_epoch().count()) + ".db");
     JapaneseDictionary dictionary(test::Utf8(missing));
     REQUIRE(!dictionary.available());
     REQUIRE(dictionary.lookup("学习").gloss.empty());
@@ -62,8 +62,7 @@ TEST_CASE(japanese_dictionary_returns_gloss_and_reading)
     const auto result = dictionary.lookup("学习");
     REQUIRE_EQ(result.gloss, std::string("習う"));
     REQUIRE_EQ(result.reading, std::string("ならう"));
-    REQUIRE_EQ(FanyImeIpc::AppendJapaneseReading(result.gloss, result.reading),
-               std::string("習う（ならう）"));
+    REQUIRE_EQ(FanyImeIpc::AppendJapaneseReading(result.gloss, result.reading), std::string("習う（ならう）"));
     const auto kana = dictionary.lookup("电脑");
     REQUIRE_EQ(kana.gloss, std::string("コンピュータ"));
     REQUIRE(kana.reading.empty());
