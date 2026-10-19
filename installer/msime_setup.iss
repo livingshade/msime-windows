@@ -858,6 +858,10 @@ begin
     (CompareText(FileName, 'msime.db-shm') = 0) or
     (CompareText(FileName, 'msime.db-journal') = 0) or
     (CompareText(FileName, 'english.db-wal') = 0) or
+    (CompareText(FileName, 'japanese.db') = 0) or
+    (CompareText(FileName, 'japanese.db.pending') = 0) or
+    (CompareText(FileName, 'japanese-dictionary-build.log') = 0) or
+    (CompareText(FileName, 'japanese-licenses') = 0) or
     (CompareText(FileName, 'english.db-shm') = 0) or
     (CompareText(FileName, 'english.db-journal') = 0) or
     (CompareText(FileName, 'others.db-wal') = 0) or
