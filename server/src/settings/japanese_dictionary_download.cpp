@@ -105,7 +105,8 @@ void StartBuild()
                              FILE_ATTRIBUTE_NORMAL, nullptr);
     if (log == INVALID_HANDLE_VALUE)
     {
-        g_process.error = "无法写入输入法数据目录";
+        g_process.error = "无法写入数据目录。请先等待后台构建结束；"
+                          "若仍失败，检查权限并清理残留的 msime-japanese-* 临时源目录后重试。";
         return;
     }
     const std::wstring arguments = L"\"" + script.wstring() + L"\" --output-root \"" + directory.wstring() + L"\\.\"";
